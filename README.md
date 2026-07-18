@@ -1,6 +1,6 @@
 # Signal Protocol Demo — X25519 ECDH + Symmetric-Key Ratchet
 
-Practical component accompanying Section 6 (Mathematical and Practical
+Practical component accompanying Section (Mathematical and Practical
 Implementation) of the CS2572 Assessment 2 report on the Signal Protocol.
 
 This demo implements, in real Curve25519 arithmetic (via Python's
@@ -24,7 +24,7 @@ the report:
 ## Setup
 
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/dwifh/Signal-Protocol-Demo>
 cd signal-demo
 pip install -r requirements.txt
 ```
@@ -53,12 +53,10 @@ secrecy is not an assumption, it falls directly out of HMAC's one-wayness.
 
 | Report section | Demo code |
 |---|---|
-| §4.4 (X3DH four DH terms) | `x25519_demo()` — single `DH(·,·)` call, the building block repeated four times in real X3DH |
-| §4.5.1 (Symmetric-key ratchet formula) | `kdf_chain_step()` — implements `MK_i = HMAC-SHA256(CK_i, 0x01)`, `CK_{i+1} = HMAC-SHA256(CK_i, 0x02)` exactly |
-| §4.5.2 (why forward secrecy holds) | `ratchet_demo()` — empirically shows the forward-only property |
+| (X3DH four DH terms) | `x25519_demo()` — single `DH(·,·)` call, the building block repeated four times in real X3DH |
+| (Symmetric-key ratchet formula) | `kdf_chain_step()` — implements `MK_i = HMAC-SHA256(CK_i, 0x01)`, `CK_{i+1} = HMAC-SHA256(CK_i, 0x02)` exactly |
+| (why forward secrecy holds) | `ratchet_demo()` — empirically shows the forward-only property |
 
 Note: this demo implements one DH call and the symmetric ratchet only. It
 does not implement the full four-DH X3DH handshake, the DH ratchet, or
-PQXDH — those are covered mathematically in the report but were judged
-out of scope for the practical component, per the report's own guidance
-("pick one, don't try both" — a demo *or* a performance discussion).
+PQXDH.
